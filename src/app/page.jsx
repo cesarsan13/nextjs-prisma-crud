@@ -1,8 +1,10 @@
 import { prisma } from "@/libs/prisma"
-import TaskCard from "@/components/taskCard"
+import TaskCard from "@/components/TaskCard"
 async function getTasks(){
   return await prisma.task.findMany()
 }
+// export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 async function HomePage() {
   const tasks = await getTasks()
   return (
